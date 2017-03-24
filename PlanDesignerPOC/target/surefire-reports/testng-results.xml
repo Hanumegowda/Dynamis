@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="0" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="lib.data.TestData" duration-ms="0" started-at="2016-11-23T13:59:26Z" finished-at="2016-11-23T13:59:26Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="0" started-at="2016-11-23T13:59:26Z" finished-at="2016-11-23T13:59:26Z">
+    </test> <!-- Command line test -->
+  </suite> <!-- lib.data.TestData -->
+</testng-results>
