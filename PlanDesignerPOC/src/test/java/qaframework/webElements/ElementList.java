@@ -70,6 +70,7 @@ public class ElementList {
 		return webdriverby;
 	}
 	
+	@SuppressWarnings("incomplete-switch")
 	public By getWebDriverBy(String elementName, String locator,String locatorStrategy)
 			throws Exception {
 		

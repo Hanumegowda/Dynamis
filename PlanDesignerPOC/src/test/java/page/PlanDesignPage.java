@@ -29,13 +29,17 @@ public class PlanDesignPage extends PageObject{
 	public PlanDesignPage clickOnPlanDesignTab()throws Exception{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.PLANDESIGNTAB)));
 		waitForElement.waitForElements(PlanDesign.PLANDESIGNTAB, "xpath");
-		this.page.element(PlanDesign.PLANDESIGNTAB, "xpath").getOne().click();
+		this.page.element(PlanDesign.PLANDESIGNTAB, "xpath").getOne().isDisplayed();
+		this.page.element(PlanDesign.PLANDESIGNTAB, "xpath").isElementPresent();
+		this.page.element(PlanDesign.PLANDESIGNTAB, "xpath").clickUsingJSE();
 		return this;
 	}
 	
 	public PlanDesignPage clickOnAddPlanDesign()throws Exception{
-		this.page.element(PlanDesign.ADDPLANDESIGN, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.ADDPLANDESIGN)));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(PlanDesign.ADDPLANDESIGN)));
+		this.page.element(PlanDesign.PLANDESIGNTAB, "xpath").getOne().isDisplayed();
+		this.page.element(PlanDesign.PLANDESIGNTAB, "xpath").isElementPresent();
 		waitForElement.waitForElements(PlanDesign.ADDPLANDESIGN, "xpath");
 		this.page.element(PlanDesign.ADDPLANDESIGN, "xpath").getOne().click();
 		return this;
@@ -84,10 +88,10 @@ public class PlanDesignPage extends PageObject{
 	}
 	
 	public PlanDesignPage clickOnNextRxPlan()throws Exception{
-		this.page.element(PlanDesign.NEXTRXPLAN, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.NEXTRXPLAN)));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(PlanDesign.NEXTRXPLAN)));
 		waitForElement.waitForElements(PlanDesign.NEXTRXPLAN, "xpath");
+		this.page.element(PlanDesign.NEXTRXPLAN, "xpath").getOne().isDisplayed();
 		this.page.element(PlanDesign.NEXTRXPLAN, "xpath").getOne().click();
 		return this;
 	}
@@ -100,22 +104,22 @@ public class PlanDesignPage extends PageObject{
 	}
 	
 	public PlanDesignPage clickOnCommunityRatedPremium()throws Exception{
-		this.page.element(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.COMMUNITYRATEDPREMIUM)));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(PlanDesign.COMMUNITYRATEDPREMIUM)));
 		waitForElement.waitForElements(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath");
 		this.page.element(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath").getOne().click();
 		return this;
 	}
 	
 	public PlanDesignPage clickOnApply()throws Exception{
-		this.page.element(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.APPLY)));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(PlanDesign.APPLY)));
 		waitForElement.waitForElements(PlanDesign.APPLY, "xpath");
 		this.page.element(PlanDesign.APPLY, "xpath").getOne().click();
 		return this;
 	}
 	
-	public PlanDesignPage enterPlanDetails(List<String[]> plans) throws Exception{
+	public PlanDesignPage addPlanDetails(List<String[]> plans) throws Exception{
 		for(int i=0;i<plans.size();i++){
 			 String[] value = plans.get(i);
 			  enterPlanDetails(value[0],value[1],value[2]);
@@ -130,7 +134,7 @@ public class PlanDesignPage extends PageObject{
 		enterPlanName(planname);
 		clickOnTraditional();
 		selectCarrier();
-		enterPlanDetails(plans);
+		addPlanDetails(plans);
 		clickOnNextCreate();
 		clickOnNextRxPlan();
 		clickOnNextPremium();
