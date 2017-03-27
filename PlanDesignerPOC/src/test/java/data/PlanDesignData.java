@@ -1,10 +1,7 @@
 package data;
 
-import java.util.List;
-
 public class PlanDesignData {
-	public  static final String PLANNAME      = "AutoPlan",
-                                TIER          = "Employee",
+	public  static final String TIER          = "Employee",
                                 TIER1         = "Employee + 1",
                                 TIER2         = "Employee + 2 or more",
                                 DEDUCTIBLE    = "1000",
@@ -14,5 +11,5 @@ public class PlanDesignData {
                                 MAXOOP        = "2000",
                                 MAXOOP1       = "3000",
                             	MAXOOP2       = "4000";
-	public String[] details = {};
+	public String PLANNAME      = "AutoPlan"+System.currentTimeMillis();
 }

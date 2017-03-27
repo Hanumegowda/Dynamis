@@ -2,10 +2,10 @@ package page;
 
 import helper.WaitForElement;
 import locators.Employer;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import qaframework.pageObject.PageObject;
 
 public class EmployerPage extends PageObject{
@@ -28,13 +28,17 @@ public class EmployerPage extends PageObject{
 	
 	public EmployerPage clickOnCreate()throws Exception{
 		waitForElement.waitForElements(Employer.CREATE, "xpath");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Employer.CREATE)));
 		this.page.element(Employer.CREATE, "xpath").getOne().click();
 		return this;
 	}
 	
 	public EmployerPage clickOnFinish()throws Exception{
 		waitForElement.waitForElements(Employer.FINISH, "xpath");
-		this.page.element(Employer.FINISH, "xpath").getOne().click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Employer.FINISH)));
+		this.page.element(Employer.FINISH, "xpath").mouseOver();
+		//this.page.element(Employer.FINISH, "xpath").getOne().sendKeys(Keys.ENTER);
+		this.page.element(Employer.FINISH, "xpath").clickUjse();
 		return this;
 	}
 	

@@ -1,13 +1,12 @@
 package page;
 
 import helper.WaitForElement;
+import helper.WaitTimeConstants;
 import locators.ExistingClients;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import qaframework.pageObject.PageObject;
 
 public class ExistingClientsPage extends PageObject{
@@ -20,18 +19,20 @@ public class ExistingClientsPage extends PageObject{
 		super(_driver);
 		this.driver = _driver;
 		waitForElement = new WaitForElement(driver);
+		wait = new WebDriverWait(this.driver, WaitTimeConstants.WAIT_TIME_LONG);
 	}
 	
-	public ExistingClientsPage enterEmployerName(String employer){
+	public ExistingClientsPage enterEmployerName(String employer) throws Exception{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ExistingClients.EMPLOYER_NAME)));
-		driver.findElement(By.xpath(ExistingClients.EMPLOYER_NAME)).clear();
-		driver.findElement(By.xpath(ExistingClients.EMPLOYER_NAME)).sendKeys(employer);
+		waitForElement.waitForElements(ExistingClients.EMPLOYER_NAME, "xpath");
+		this.page.element(ExistingClients.EMPLOYER_NAME, "xpath").clearInputValue().sendKeys(employer);
 		return this;
 	}
 	
-	public ExistingClientsPage clickOnCreateAndOpen(){
+	public ExistingClientsPage clickOnCreateAndOpen()throws Exception{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ExistingClients.CREATEANDOPEN)));
-		driver.findElement(By.id(ExistingClients.CREATEANDOPEN)).click();
+		waitForElement.waitForElements(ExistingClients.CREATEANDOPEN, "id");
+		this.page.element(ExistingClients.CREATEANDOPEN, "id").getOne().click();
 		return this;
 	}
 	

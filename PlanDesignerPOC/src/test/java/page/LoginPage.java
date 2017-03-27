@@ -40,7 +40,7 @@ public class LoginPage extends PageObject{
 	public LoginPage enterPassword(String password)throws Exception{
 		waitForElement.waitForElements(Login.PASSWORD, "id");
 		this.page.element(Login.PASSWORD, "id").clearInputValue().sendKeys(password);
-		assertEquals(this.page.element(Login.PASSWORD, "css").getOne().getAttribute("value"),password);
+		assertEquals(this.page.element(Login.PASSWORD, "id").getOne().getAttribute("value"),password);
 		return this;
 	}
 	

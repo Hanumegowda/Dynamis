@@ -15,6 +15,7 @@ public class Configuration {
 	public WebDriver driver;
 	public WebDriverWait wait = null;
 	public String browser = "chrome";
+	public static String  URL    = "https://staging.dynamiscorp.com/#/";
 
 	@BeforeClass
 	public void openBrowser() {

@@ -1,7 +1,5 @@
 package module;
 
-import locators.Login;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,7 +23,6 @@ public class Module {
 	
 	public Module clickLogout(){
 		driver.findElement(By.xpath(locators.Module.LOGOUT)).click();
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(Login.EMAIL_PHONE)));
 		return this;
 	}
 }
