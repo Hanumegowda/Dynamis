@@ -1,10 +1,12 @@
 package page;
 
-import helper.WaitForElement;
 import locators.Login;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import static org.testng.Assert.*;
+import qaframework.helper.WaitForElement;
 import qaframework.pageObject.PageObject;
 
 public class LoginPage extends PageObject{

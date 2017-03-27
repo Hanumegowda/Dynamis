@@ -1,4 +1,4 @@
-package helper;
+package qaframework.helper;
 
 import com.thoughtworks.selenium.Selenium;
 

@@ -6,6 +6,7 @@
       <class name="requirement.CreatePlanDesign">
         <methods>
           <include name="closeBrowser"/>
+          <include name="CreatePlanDesignForCoveragePeriod"/>
           <include name="CreateCoveragePeriod"/>
           <include name="openBrowser"/>
         </methods>

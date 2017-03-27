@@ -2,13 +2,15 @@ package page;
 
 import java.util.List;
 
-import helper.WaitForElement;
-import helper.WaitTimeConstants;
 import locators.PlanDesign;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import qaframework.helper.WaitForElement;
+import qaframework.helper.WaitTimeConstants;
 import qaframework.pageObject.PageObject;
 import  static org.testng.Assert.assertTrue;
 public class PlanDesignPage extends PageObject{
@@ -24,7 +26,15 @@ public class PlanDesignPage extends PageObject{
 		wait = new WebDriverWait(this.driver, WaitTimeConstants.WAIT_TIME_LONG);
 	}
 	
+	public PlanDesignPage clickOnPlanDesignTab()throws Exception{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.PLANDESIGNTAB)));
+		waitForElement.waitForElements(PlanDesign.PLANDESIGNTAB, "xpath");
+		this.page.element(PlanDesign.PLANDESIGNTAB, "xpath").getOne().click();
+		return this;
+	}
+	
 	public PlanDesignPage clickOnAddPlanDesign()throws Exception{
+		this.page.element(PlanDesign.ADDPLANDESIGN, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.ADDPLANDESIGN)));
 		waitForElement.waitForElements(PlanDesign.ADDPLANDESIGN, "xpath");
 		this.page.element(PlanDesign.ADDPLANDESIGN, "xpath").getOne().click();
@@ -58,11 +68,11 @@ public class PlanDesignPage extends PageObject{
 		return this;
 	}
 	
-	public PlanDesignPage enterPlanDetails(String tier, String value, String rs)throws Exception{
-		String str = "//td[text()='"+tier+"']/following-sibling::td/input[@name='"+value+"']";
-		waitForElement.waitForElements(str, "xpath");
-		this.page.element(str, "xpath").getOne().click();
-		this.page.element(str, "xpath").getOne().sendKeys(rs);
+	public PlanDesignPage enterPlanDetails(String tier, String value, String rupees)throws Exception{
+		String planDetailes = PlanDesign.TDTEXT+tier+PlanDesign.FOLLOWINGSIBLING+value+PlanDesign.CLOSEBRACKET;
+		waitForElement.waitForElements(planDetailes, "xpath");
+		this.page.element(planDetailes, "xpath").getOne().click();
+		this.page.element(planDetailes, "xpath").getOne().sendKeys(rupees);
 		return this;
 	}
 	
@@ -74,7 +84,7 @@ public class PlanDesignPage extends PageObject{
 	}
 	
 	public PlanDesignPage clickOnNextRxPlan()throws Exception{
-		Thread.sleep(5000);
+		this.page.element(PlanDesign.NEXTRXPLAN, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.NEXTRXPLAN)));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(PlanDesign.NEXTRXPLAN)));
 		waitForElement.waitForElements(PlanDesign.NEXTRXPLAN, "xpath");
@@ -90,7 +100,7 @@ public class PlanDesignPage extends PageObject{
 	}
 	
 	public PlanDesignPage clickOnCommunityRatedPremium()throws Exception{
-		Thread.sleep(5000);
+		this.page.element(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.COMMUNITYRATEDPREMIUM)));
 		waitForElement.waitForElements(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath");
 		this.page.element(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath").getOne().click();
@@ -98,23 +108,29 @@ public class PlanDesignPage extends PageObject{
 	}
 	
 	public PlanDesignPage clickOnApply()throws Exception{
-		Thread.sleep(5000);
+		this.page.element(PlanDesign.COMMUNITYRATEDPREMIUM, "xpath").wait(WaitTimeConstants.WAIT_TIME_TOO_LONG);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesign.APPLY)));
 		waitForElement.waitForElements(PlanDesign.APPLY, "xpath");
 		this.page.element(PlanDesign.APPLY, "xpath").getOne().click();
 		return this;
 	}
 	
-	public PlanDesignPage createCommunityRatedPlanDesign(String planname,List<String[]> str)throws Exception{
+	public PlanDesignPage enterPlanDetails(List<String[]> plans) throws Exception{
+		for(int i=0;i<plans.size();i++){
+			 String[] value = plans.get(i);
+			  enterPlanDetails(value[0],value[1],value[2]);
+		}
+		return this;	
+	}
+	
+	public PlanDesignPage createCommunityRatedPlanDesign(String planname,List<String[]> plans)throws Exception{
+		clickOnPlanDesignTab();
 		clickOnAddPlanDesign();
 		clickOnAddNew();
 		enterPlanName(planname);
 		clickOnTraditional();
 		selectCarrier();
-		for(int i=0;i<str.size();i++){
-			 String[] value = str.get(i);
-			  enterPlanDetails(value[0],value[1],value[2]);
-		}
+		enterPlanDetails(plans);
 		clickOnNextCreate();
 		clickOnNextRxPlan();
 		clickOnNextPremium();
@@ -124,11 +140,10 @@ public class PlanDesignPage extends PageObject{
 	}
 	
 	public PlanDesignPage verifyPlan(String plan){
-		String str = PlanDesign.DIV_CONTAINS+plan+PlanDesign.CLOSEBRACKET;
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(str)));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(str)));
-		assertTrue((driver.findElement(By.xpath(str))).isDisplayed());
+		String PlanDesignName = PlanDesign.DIV_CONTAINS+plan+PlanDesign.CLOSEBRACKET;
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesignName)));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PlanDesignName)));
+		assertTrue((driver.findElement(By.xpath(PlanDesignName))).isDisplayed());
 		return this;
 	}
-
 }

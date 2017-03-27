@@ -1,11 +1,11 @@
 package qaframework.webElements;
 
-import helper.WaitTimeConstants;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import qaframework.helper.WaitTimeConstants;
 
 public class WebdriverWait {
 	

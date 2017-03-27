@@ -1,7 +1,5 @@
 package data;
 
 public class ExistingClientsData {
-	
-	public String EMPLOYER = "AutoEmployer"+System.currentTimeMillis();
-
+	public String employer = "AutoEmployer"+System.currentTimeMillis();
 }

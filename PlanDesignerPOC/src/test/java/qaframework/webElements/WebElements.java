@@ -189,7 +189,7 @@ public class WebElements {
 		action.keyUp(Keys.ENTER);
 	}
 	
-	public void clickUjse() throws Exception {
+	public void clickUsingJSE() throws Exception { //JSE - Java Script Executor
 		WebElement element = this.getOne();
 		((JavascriptExecutor)this.driver).executeScript("arguments[0].click();", element);
 	}

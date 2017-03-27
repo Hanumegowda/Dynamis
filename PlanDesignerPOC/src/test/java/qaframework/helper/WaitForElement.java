@@ -1,4 +1,4 @@
-package helper;
+package qaframework.helper;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;

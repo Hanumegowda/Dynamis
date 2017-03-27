@@ -1,4 +1,4 @@
-package helper;
+package qaframework.helper;
 
 import jxl.CellType;
 import jxl.Workbook;

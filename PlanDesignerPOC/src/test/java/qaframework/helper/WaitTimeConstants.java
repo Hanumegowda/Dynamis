@@ -1,4 +1,4 @@
-package helper;
+package qaframework.helper;
 public class WaitTimeConstants {
 	
 	//Maximum and minimum wait time

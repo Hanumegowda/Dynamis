@@ -1,4 +1,4 @@
-package helper;
+package qaframework.helper;
 
 import java.io.BufferedReader;
 import java.io.File;

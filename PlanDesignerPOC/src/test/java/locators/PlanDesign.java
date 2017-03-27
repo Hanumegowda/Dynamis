@@ -14,7 +14,10 @@ public class PlanDesign {
 			                   COMMUNITYRATEDPREMIUM = "//span[text()='+ Community Rated Premium']",
 			                   APPLY                 = "//span[text()='Apply']",
 			                   DIV_CONTAINS          = "//div[contains(text(),'",
-			                   CLOSEBRACKET          = "')]";
+			                   CLOSEBRACKET          = "')]",
+			                   TDTEXT                = "//td[text()='",
+			                   FOLLOWINGSIBLING      = "']/following-sibling::td/input[@name='",
+			                   PLANDESIGNTAB         = "//img/following-sibling::span[text()='Plan Designs']";
 	    
 
 }

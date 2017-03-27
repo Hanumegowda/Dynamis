@@ -1,12 +1,14 @@
 package page;
 
-import helper.WaitForElement;
-import helper.WaitTimeConstants;
 import locators.ExistingClients;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import qaframework.helper.WaitForElement;
+import qaframework.helper.WaitTimeConstants;
 import qaframework.pageObject.PageObject;
 
 public class ExistingClientsPage extends PageObject{
@@ -40,6 +42,5 @@ public class ExistingClientsPage extends PageObject{
 		enterEmployerName(employer);
 		clickOnCreateAndOpen();
 		return this;
-		
 	}
 }

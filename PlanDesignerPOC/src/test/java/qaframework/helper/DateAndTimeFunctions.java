@@ -1,4 +1,4 @@
-package helper;
+package qaframework.helper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
