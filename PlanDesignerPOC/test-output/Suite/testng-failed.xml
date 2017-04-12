@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" parallel="none">
-  <test name="Test(failed)" parallel="none">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="classes">
+  <test name="Test(failed)" parallel="classes">
     <classes>
-      <class name="requirement.Facebook">
+      <class name="requirement.CreatePlanDesign">
         <methods>
           <include name="closeBrowser"/>
-          <include name="addMember"/>
+          <include name="createCoveragePeriod"/>
+          <include name="CreatePlanDesignForCoveragePeriod"/>
+          <include name="verifyPremiums"/>
+          <include name="updateEnrollmentAndCreateQualified"/>
           <include name="openBrowser"/>
         </methods>
-      </class> <!-- requirement.Facebook -->
+      </class> <!-- requirement.CreatePlanDesign -->
+      <class name="requirement.Login">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- requirement.Login -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

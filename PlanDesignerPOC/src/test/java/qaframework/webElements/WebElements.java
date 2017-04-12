@@ -9,7 +9,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import qaframework.helper.WaitTimeConstants;
 
 public class WebElements {
 	
@@ -194,10 +198,40 @@ public class WebElements {
 		((JavascriptExecutor)this.driver).executeScript("arguments[0].click();", element);
 	}
 	
-	public void sendkeysUJSE(String text) throws Exception {
+	public void sendkeysUsingJSE(String text) throws Exception {
 		WebElement element = this.getOne();
 		element.clear();
 		((JavascriptExecutor)this.driver).executeScript("arguments[0].value='"+text+"';", element);
+	}
+	
+	public boolean waitForInvisibilityOfElement(){
+		boolean condition = true;
+		try{
+			WebDriverWait wait = new WebDriverWait(this.driver, WaitTimeConstants.WAIT_TIME_SMALL);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(this.webDrivryBy));
+		}catch(Exception e){
+			condition = false;
+		}
+		
+		return condition;
+	}
+	
+	public boolean waitForElementEnable(){
+		WebDriverWait wait = new WebDriverWait(this.driver, WaitTimeConstants.WAIT_TIME_TOO_LONG);
+		wait.until(ExpectedConditions.elementToBeClickable(this.webDrivryBy));
+		return false;
+	}
+	
+	public boolean waitForVisibilityOfElement(){
+		boolean condition = true;
+		try{
+			WebDriverWait wait = new WebDriverWait(this.driver, WaitTimeConstants.LOGIN_COUNT);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(this.webDrivryBy));
+		}catch(Exception e){
+			condition = false;
+		}
+		
+		return condition;
 	}
 }
 

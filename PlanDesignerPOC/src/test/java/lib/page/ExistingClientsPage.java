@@ -1,10 +1,8 @@
-package page;
+package lib.page;
 
-import locators.ExistingClients;
+import lib.locators.ExistingClients;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import qaframework.helper.WaitForElement;
@@ -25,22 +23,23 @@ public class ExistingClientsPage extends PageObject{
 	}
 	
 	public ExistingClientsPage enterEmployerName(String employer) throws Exception{
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ExistingClients.EMPLOYER_NAME)));
 		waitForElement.waitForElements(ExistingClients.EMPLOYER_NAME, "xpath");
+		this.page.element_wait(ExistingClients.EMPLOYER_NAME, "xpath").waitForVisibilityOfElement();
 		this.page.element(ExistingClients.EMPLOYER_NAME, "xpath").clearInputValue().sendKeys(employer);
 		return this;
 	}
 	
-	public ExistingClientsPage clickOnCreateAndOpen()throws Exception{
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ExistingClients.CREATEANDOPEN)));
-		waitForElement.waitForElements(ExistingClients.CREATEANDOPEN, "id");
-		this.page.element(ExistingClients.CREATEANDOPEN, "id").getOne().click();
+	public ExistingClientsPage clickCreateAndOpen()throws Exception{
+		waitForElement.waitForElement(ExistingClients.CREATEANDOPEN, "id");
+		this.page.element_wait(ExistingClients.CREATEANDOPEN, "id").waitForVisibilityOfElement();
+		this.page.element_wait(ExistingClients.CREATEANDOPEN, "id").waitForElementEnable();
+		this.page.element(ExistingClients.CREATEANDOPEN, "id").clickUsingJSE();
 		return this;
 	}
 	
 	public ExistingClientsPage createAndOpenEmployer(String employer) throws Exception{
 		enterEmployerName(employer);
-		clickOnCreateAndOpen();
+		clickCreateAndOpen();
 		return this;
 	}
 }

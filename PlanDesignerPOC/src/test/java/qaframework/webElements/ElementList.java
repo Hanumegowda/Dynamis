@@ -30,9 +30,9 @@ public class ElementList {
 	 * @return
 	 * @throws Exception
 	 */
-	public WebdriverWait element_wait(String elementName, String locatorStrategy)
+	public WebElements element_wait(String elementName, String locatorStrategy)
 			throws Exception {
-		return new WebdriverWait(this, this.getWebDriverBy(elementName,
+		return new WebElements(this, this.getWebDriverBy(elementName,
 				locatorStrategy));
 	}
 	

@@ -1,4 +1,4 @@
-package locators;
+package lib.locators;
 
 public class Employer {
 	

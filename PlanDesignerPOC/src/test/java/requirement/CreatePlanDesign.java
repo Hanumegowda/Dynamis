@@ -1,46 +1,63 @@
 package requirement;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import page.EmployerPage;
-import page.ExistingClientsPage;
-import page.HomePage;
-import page.LoginPage;
-import page.PlanDesignPage;
+import lib.data.CoveragePeriodSetupData;
+import lib.data.ExistingClientsData;
+import lib.data.LoginData;
+import lib.data.PlanDesignData;
+import lib.page.LoginPage;
+import steps.CreateCoveragePeriodSteps;
+import steps.CreatePlanDesignSteps;
 import configuration.Configuration;
-import data.ExistingClientsData;
-import data.LoginData;
-import data.PlanDesignData;
 
-public class CreatePlanDesign extends Configuration{
-	
-	public CreatePlanDesign() throws Exception{
+public class CreatePlanDesign extends Configuration {
+
+	public CreatePlanDesign() throws Exception {
 		super();
 	}
 	
-	@Test(groups = "HappyDay", description = "Verify if user can create Coverage Period")
-	public void CreateCoveragePeriod() throws Exception{
-		
-		LoginPage login = new LoginPage(this.driver);
-		HomePage home = new HomePage(this.driver);
-		ExistingClientsPage existingclients = new ExistingClientsPage(this.driver); 
-		EmployerPage employer = new EmployerPage(this.driver);
-		ExistingClientsData existingClientsData = new ExistingClientsData();
-		PlanDesignData planDesignData = new PlanDesignData();
-		
-		login.loginAsAdmin(Configuration.URL,LoginData.USERNAME,LoginData.PASSWORD);
-		home.clickAddNewExistingClient();
-		existingclients.createAndOpenEmployer(existingClientsData.employer);
-		employer.createCoveragePeriod(planDesignData.coveragePeriodName);
+	LoginPage when;
+	CreateCoveragePeriodSteps then ;
+	CreateCoveragePeriodSteps given ;
+	ExistingClientsData existingClientsData = new ExistingClientsData();;
+	PlanDesignData planDesignData = new PlanDesignData();
+	
+	@Test
+	public void createCoveragePeriod() throws Exception {
+		when = new LoginPage(this.driver);
+		then = new CreateCoveragePeriodSteps(this.driver);
+	
+		when.login(Configuration.URL, LoginData.USERNAME, LoginData.PASSWORD);
+		then.CreateCoveragePeriod(existingClientsData.employer);
 	}
 	
-	@Test(dependsOnMethods={"CreateCoveragePeriod"}, groups = "HappyDay", description = "Verify if user can add Plan Design for a Coverage Period")
-	public void CreatePlanDesignForCoveragePeriod() throws Exception{
+	@Test(dependsOnMethods="createCoveragePeriod", groups = "HappyDay",description = "Verify if user can add Plan Design for a Coverage Period")
+	public void CreatePlanDesignForCoveragePeriod() throws Exception{	
+		CreatePlanDesignSteps then=new CreatePlanDesignSteps(driver);
+
+		then.CreatePlanDesignForCoveragePeriod(planDesignData.planName, planDesignData.planDesignDetails());
+	}
+	
+	@Test(dependsOnMethods="CreatePlanDesignForCoveragePeriod", groups = "HappyDay",description = "Update the enrollement and create qualified HDHP plan in it")
+	public void updateEnrollmentAndCreateQualified()throws Exception{
+		given = new CreateCoveragePeriodSteps(this.driver);
+		then = new CreateCoveragePeriodSteps(this.driver);
 		
-		PlanDesignPage plandesign = new PlanDesignPage(this.driver);
-		PlanDesignData planDesignData = new PlanDesignData();
+		given.searchSelectExistingClient(existingClientsData.employer);
+			then.selectEnrollmentType(CoveragePeriodSetupData.EMPLOYEE_SPOUSE)
+			.createCompositePremium(planDesignData.planName1,planDesignData.planDesignDetails(),planDesignData.premiums(),PlanDesignData.PREMIUMSHARE50PERCENT);		
+	}
+	
+	@DataProvider
+	public Object[][] premiumShares(){
+		return new Object[][]{{PlanDesignData.EMPLOYEE_ONLY},{PlanDesignData.EMPLOYEE_SPOUSE},{PlanDesignData.EMPLOYEE_1CH},{PlanDesignData.FAMILY}};
+	}
+	
+	@Test(dependsOnMethods="updateEnrollmentAndCreateQualified", groups = "HappyDay",dataProvider="premiumShares")
+	public void verifyPremiums(String premiumShares)throws Exception{
+		then = new CreateCoveragePeriodSteps(this.driver);
 		
-		plandesign.createCommunityRatedPlanDesign(planDesignData.planName, planDesignData.planDetails);
-		plandesign.verifyPlan(planDesignData.planName);
+		then.verifyPremiumShares(premiumShares);			
 	}
 }

@@ -1,12 +1,13 @@
-package page;
+package lib.page;
 
-import locators.Login;
+import lib.locators.Login;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.Assert.*;
 import qaframework.helper.WaitForElement;
+import qaframework.helper.WaitTimeConstants;
 import qaframework.pageObject.PageObject;
 
 public class LoginPage extends PageObject{
@@ -19,6 +20,7 @@ public class LoginPage extends PageObject{
 		super(_driver);
 		this.driver = _driver;
 		waitForElement = new WaitForElement(this.driver);
+		wait = new WebDriverWait(this.driver, WaitTimeConstants.WAIT_TIME_LONG);
 	}
 	
 	public LoginPage lauchUrl(String url){
@@ -26,8 +28,9 @@ public class LoginPage extends PageObject{
 		return this;
 	}
 	
-	public LoginPage clickOnLoginButton()throws Exception{
+	public LoginPage clickLoginButton()throws Exception{
 		waitForElement.waitForElements(Login.LOGIN, "xpath");
+		this.page.element_wait(Login.LOGIN, "xpath").waitForElementEnable();
 		this.page.element(Login.LOGIN, "xpath").getOne().click();
 		return this;
 	}
@@ -46,11 +49,16 @@ public class LoginPage extends PageObject{
 		return this;
 	}
 	
-	public LoginPage loginAsAdmin(String url,String username,String password)throws Exception{
+	public LoginPage login(String url,String username,String password)throws Exception{
 		lauchUrl(url);
 		enterUserName(username);
 		enterPassword(password);
-		clickOnLoginButton();
+		clickLoginButton();
+		return this;
+	}
+	public LoginPage verifyInvalidCredentialsError()throws Exception{
+		waitForElement.waitForElements(Login.AUTHENTICATIONERROR, "xpath");
+		assertTrue((this.page.element(Login.AUTHENTICATIONERROR, "xpath").isElementPresent()));
 		return this;
 	}
 }

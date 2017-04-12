@@ -121,7 +121,7 @@ public class WaitForElement {
 				intCnt++;
 				Thread.sleep(1000);
 			}
-		} while (intCnt < 3);
+		} while (intCnt < 2);
 	}
 
 	public void waitForPageToLoad() throws Exception {

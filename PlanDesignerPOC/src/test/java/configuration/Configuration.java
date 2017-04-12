@@ -15,10 +15,11 @@ public class Configuration {
 	public WebDriver driver;
 	public WebDriverWait wait = null;
 	public String browser = "chrome";
-	public static String URL = "https://staging.dynamiscorp.com/#/";
+	public static String URL = /*"https://staging.dynamiscorp.com/#/"*/"http://localhost:13760/#/login";
 
 	@BeforeClass
-	public void openBrowser() {
+	//@Parameters("browser")
+	public void openBrowser(/*String browser*/) {
 		
 		if (browser.equalsIgnoreCase("firefox")) {
 			System.out.println("Firefox driver Session has Started");

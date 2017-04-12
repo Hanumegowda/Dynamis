@@ -36,8 +36,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-lib.data.TestData">
-              <span class="suite-name border-passed">lib.data.TestData</span>
+            <a href="#" class="navigator-link" panel-name="suite-requirement.Demo">
+              <span class="suite-name border-passed">requirement.Demo</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -47,37 +47,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-lib.data.TestData">
+                  <a href="#" class="navigator-link " panel-name="test-xml-requirement.Demo">
                     <span>[unset file name]</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-lib.data.TestData">
+                  <a href="#" class="navigator-link " panel-name="testlist-requirement.Demo">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-lib.data.TestData">
-                    <span>0 groups</span>
+                  <a href="#" class="navigator-link " panel-name="group-requirement.Demo">
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-lib.data.TestData">
+                  <a href="#" class="navigator-link " panel-name="times-requirement.Demo">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-lib.data.TestData">
+                  <a href="#" class="navigator-link " panel-name="reporter-requirement.Demo">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-lib.data.TestData">
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-requirement.Demo">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-lib.data.TestData">
+                  <a href="#" class="navigator-link " panel-name="chronological-requirement.Demo">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -90,7 +90,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">0 methods,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-requirement.Demo" class="hide-methods passed suite-requirement.Demo"> (hide)</a> <!-- hide-methods passed suite-requirement.Demo -->
+                      <a href="#" panel-name="suite-requirement.Demo" class="show-methods passed suite-requirement.Demo"> (show)</a> <!-- show-methods passed suite-requirement.Demo -->
+                    </span>
+                    <div class="method-list-content passed suite-requirement.Demo">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-requirement.Demo" title="requirement.Demo" hash-for-method="xsample3">xsample3</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-requirement.Demo -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -101,28 +115,50 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-lib.data.TestData" class="panel lib.data.TestData">
-        </div> <!-- panel lib.data.TestData -->
-        <div panel-name="test-xml-lib.data.TestData" class="panel">
+        <div panel-name="suite-requirement.Demo" class="panel requirement.Demo">
+          <div class="suite-requirement.Demo-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">requirement.Demo</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="xsample3">
+                  </a> <!-- xsample3 -->
+                  <span class="method-name">xsample3</span>
+                  <em>
+(this is the third method of this class)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-requirement.Demo-class-passed -->
+        </div> <!-- panel requirement.Demo -->
+        <div panel-name="test-xml-requirement.Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite verbose=&quot;0&quot; name=&quot;lib.data.TestData&quot;&gt;
+&lt;suite verbose=&quot;0&quot; name=&quot;requirement.Demo&quot;&gt;
   &lt;test name=&quot;Command line test&quot; preserve-order=&quot;false&quot;&gt;
+    &lt;method-selectors&gt;
+      &lt;method-selector&gt;
+        &lt;selector-class name=&quot;org.apache.maven.surefire.testng.utils.MethodSelector&quot; priority=&quot;10000&quot;/&gt;
+      &lt;/method-selector&gt;
+    &lt;/method-selectors&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;lib.data.TestData&quot;/&gt;
+      &lt;class name=&quot;requirement.Demo&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Command line test --&gt;
-&lt;/suite&gt; &lt;!-- lib.data.TestData --&gt;
+&lt;/suite&gt; &lt;!-- requirement.Demo --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-lib.data.TestData" class="panel">
+        <div panel-name="testlist-requirement.Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for lib.data.TestData</span>
+            <span class="header-content">Tests for requirement.Demo</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
@@ -132,56 +168,84 @@
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-lib.data.TestData" class="panel">
+        <div panel-name="group-requirement.Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for lib.data.TestData</span>
+            <span class="header-content">Groups for requirement.Demo</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">edge</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">xsample3</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-lib.data.TestData" class="panel">
+        <div panel-name="times-requirement.Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for lib.data.TestData</span>
+            <span class="header-content">Times for requirement.Demo</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_lib.data.TestData');
-function tableData_lib.data.TestData() {
+suiteTableInitFunctions.push('tableData_requirement.Demo');
+function tableData_requirement.Demo() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(0);
-window.suiteTableData['lib.data.TestData']= { tableData: data, tableDiv: 'times-div-lib.data.TestData'}
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'xsample3')
+data.setCell(0, 2, 'requirement.Demo')
+data.setCell(0, 3, 14);
+window.suiteTableData['requirement.Demo']= { tableData: data, tableDiv: 'times-div-requirement.Demo'}
 return data;
 }
               </script>
-              <div id="times-div-lib.data.TestData">
-              </div> <!-- times-div-lib.data.TestData -->
+              <span class="suite-total-time">Total running time: 14 ms</span>
+              <div id="times-div-requirement.Demo">
+              </div> <!-- times-div-requirement.Demo -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-lib.data.TestData" class="panel">
+        <div panel-name="reporter-requirement.Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for lib.data.TestData</span>
+            <span class="header-content">Reporter output for requirement.Demo</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-lib.data.TestData" class="panel">
+        <div panel-name="ignored-methods-requirement.Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">2 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">requirement.Demo</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">cbsample1</span>
+                <br/>
+                <span class="ignored-method-name">zsample2</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-lib.data.TestData" class="panel">
+        <div panel-name="chronological-requirement.Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">requirement.Demo</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">xsample3</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
